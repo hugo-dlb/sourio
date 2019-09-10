@@ -2,6 +2,7 @@ import express from 'express';
 import http from 'http';
 import socket from 'socket.io';
 
+const iPort = process.env.PORT || 3000;
 const oApp = express();
 const oServer = http.createServer(oApp);
 const io = socket(oServer);
@@ -33,6 +34,6 @@ io.on('connection', (socket) => {
     });
 });
 
-oServer.listen(80, () => {
-    console.log('listening on *:80');
+oServer.listen(iPort, () => {
+    console.log(`listening on *:${iPort}`);
 });
